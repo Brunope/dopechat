@@ -56,7 +56,9 @@ var push_to_clients = function(message) {
     var dateString = date.toString().split(' ')[4];
     for (key in clients) {
         var data = 'data: { "message": "' + message +
-            '", "time": "' + dateString + '" }\n\n';
+            '", "time": "' + dateString +
+            '", "name": "' + clientId + '" }\n\n';
+        
         console.log('writing to client ' + data);
         clients[key].write(data);
     };
