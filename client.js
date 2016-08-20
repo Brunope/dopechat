@@ -1,12 +1,19 @@
 $(document).ready(function(e) {
-
+    var messageNum = 0;
+    
     // event stream
     var source = new EventSource("/events/");
     source.onmessage = function(e) {
 	console.log('adding' + e);
         var data = JSON.parse(e.data);
         console.log('got ' + data);
-	$("#container").append(data.time + ": &nbsp" + data.message + "<br>");
+        var line = $("#line");
+        var newLine = line.clone(true);
+        newLine.id = line.id + messageNum++;
+        newLine.find("#message").html(data.message);
+        newLine.find("#time").html(data.time);
+        newLine.find("#name").html(data.name);
+        newLine.insertAfter(line);
     };
 
     // ajax form submission
