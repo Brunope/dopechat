@@ -5,17 +5,18 @@
   <body>
 	<div id="container">
 	  <div id="line">
-		<span id="name"></span>
-		<span id="message"></span>
-		<span id="time"></span><br>
+		<span class="name"></span>
+		<span class="message"></span>
+		<span class="time"></span><br>
 	  </div>
+	  
+	  <form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
+		Message: <input type="text" id="message" name="message">
+		<input type="submit" id="submitButton" name="submitButton" value="Send">
+		<span id="result"></span>
+	  </form>
 	</div>
-	
-	<form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
-	  Message: <input type="text" id="message" name="message">
-	  <input type="submit" id="submitButton" name="submitButton" value="Send">
-	  <span id="result"></span>
-	</form>
+
 
 <!-- scripts here for faster load speed -->
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
