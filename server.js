@@ -64,7 +64,7 @@ var push_to_clients = function(message) {
     };
 }
 
-var server = app.listen(8080, function(err) {
+var server = app.listen(54321, function(err) {
     var host = server.address().address;
     var port = server.address().port;
     console.log('running on http://%s:%s', host, port);
