@@ -37,13 +37,6 @@ app.get('/events/', function(req, res) {
     })(clientId++)
 });
 
-app.post('/', function (req, res) {
-    console.log(req.body);
-    console.log('should be... ' + req.body.message);
-    res.end();
-    push_to_clients(req.body.message);
-});
-
 app.post('/process_post', urlencodedParser, function(req, res) {
     console.log(req.body);
     //res.end(JSON.stringify(response));
