@@ -4,9 +4,7 @@ $(document).ready(function(e) {
     // event stream
     var source = new EventSource("/events/");
     source.onmessage = function(e) {
-	console.log('adding' + e);
         var data = JSON.parse(e.data);
-        console.log('got ' + data);
         var line = $("#line");
         var newLine = line.clone();
         newLine.id = line.id + messageNum++;
@@ -19,6 +17,7 @@ $(document).ready(function(e) {
     // ajax form submission
     $("form[ajax=true]").submit(function(e) {
         e.preventDefault();
+        console.log('sending message');
         var form_data = $(this).serialize();
         var form_url = $(this).attr("action");
         var form_method = $(this).attr("method").toUpperCase();
@@ -27,10 +26,9 @@ $(document).ready(function(e) {
             type: form_method,      
             data: form_data,     
             cache: false,
-            success: function(returnhtml){
-                console.log('got ' + returnhtml);
+            success: function(returnhtml) {
                 return true;
-            }           
+            }
         });
         // clear form after
         $('input[type="text"], textarea').val('');

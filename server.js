@@ -1,21 +1,50 @@
 var express = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var session = require('client-sessions');
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var app = express();
 
-app.use(express.static('./'));
 app.use(bodyParser.json());
+app.use(session({
+    cookieName: 'session',
+    secret: '98j93hUtur5h5ehwTnt94tb4t3t3nf6SLSSS5',  // randy
+    duration: 30 * 60 * 1000,
+    activeDuration: 10 * 60 * 1000,
+}));
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html');
+    console.log('get index from ' + req.session.user);
+    if (!req.session.user) {
+        res.redirect('/login');
+        return true;
+    }
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 var clients = {};
 var clientId = 0;
-//var clients = {};  // <- Keep a map of attached clients
+
+app.get('/login', function(req, res) {
+    console.log('get login');
+    res.sendFile(__dirname + '/public/login.html');
+});
+
+app.post('/login', urlencodedParser, function(req, res) {
+    console.log('post login ' + req.body.name);
+    req.session.user = req.body.name;
+    res.redirect('/');
+    return true;
+});
+
+app.get('/logout', function(req, res) {
+    console.log('get logout');
+    delete req.session.user;
+    res.redirect('/login');
+    return true;
+});
 
 // Called once for each new client. Note, this response is left open!
 app.get('/events/', function(req, res) {
@@ -29,40 +58,32 @@ app.get('/events/', function(req, res) {
     (function(clientId) {
         console.log('adding client ' + clientId);
         clients[clientId] = res;
-        //clients[clientId] = res;  // <- Add this client to those we consider "attached"
-
         req.on("close", function() {
             console.log('removing client ' + clientId);
-            delete clients[clientId]});  // <- Remove this client when he disconnects
+            delete clients[clientId]});
     })(clientId++)
-});
-
-app.post('/', function (req, res) {
-    console.log(req.body);
-    console.log('should be... ' + req.body.message);
-    res.end();
-    push_to_clients(req.body.message);
 });
 
 app.post('/process_post', urlencodedParser, function(req, res) {
     console.log(req.body);
-    //res.end(JSON.stringify(response));
-    //res.end();
     res.end('ok');
-    push_to_clients(req.body.message);
+    if (req.body.message.length) {
+        push_to_clients(req.body.message, req.session.user);
+    }
 });
-var push_to_clients = function(message) {
+
+var push_to_clients = function(message, user) {
     var date = new Date();
     var dateString = date.toString().split(' ')[4];
     for (key in clients) {
         var data = 'data: { "message": "' + message +
             '", "time": "' + dateString +
-            '", "name": "' + clientId + '" }\n\n';
-        
-        console.log('writing to client ' + data);
+            '", "name": "' + user + '" }\n\n';
         clients[key].write(data);
     };
 }
+
+app.use(express.static('./public'));  // serve static files AFTER routing
 
 var server = app.listen(54321, function(err) {
     var host = server.address().address;
