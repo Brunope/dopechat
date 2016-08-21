@@ -6,15 +6,15 @@
   <body>
 	<div id="container">
 	  <div id="line" class="line">
-		<span class="name"></span>
-		<span class="message"></span>
-		<span class="time"></span><br>
+		<div class="name"></div>
+		<div class="message"></div>
+		<div class="time"></div><br>
 	  </div>
 	  
-	  <form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
-		Message: <input type="text" id="message" name="message">
+	<form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
+		Message: <input type="text" id="message" name="Type Here">
 		<input type="submit" id="submitButton" name="submitButton" value="Send">
-	  </form>
+	</form>
 	</div>
 
 	<!-- scripts here for faster load speed -->
