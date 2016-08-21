@@ -1,0 +1,50 @@
+body, html{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+#container{
+	height: auto;
+	border: 3px solid blue;
+	position: absolute;
+	display: block;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 20px 80px;
+
+}
+
+.line{
+	text-align: center;
+	border: 3px solid red;
+	max-width: 800px;
+	margin: auto;
+}
+
+.name{
+	color: blue;
+	border: 3px solid yellow;
+	float: left;
+}
+
+.message{
+	font-size: 20px;
+	float: left;
+	padding-left: 30px;
+}
+
+.time{
+	float: right;
+}
+
+#msgForm{
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 0;
+}
+#message{
+	width: 87%;
+}
