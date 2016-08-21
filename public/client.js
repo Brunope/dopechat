@@ -27,9 +27,9 @@ $(document).ready(function(e) {
         var form_url = $(this).attr("action");
         var form_method = $(this).attr("method").toUpperCase();
         $.ajax({
-            url: form_url, 
-            type: form_method,      
-            data: form_data,     
+            url: form_url,
+            type: form_method,
+            data: form_data,
             cache: false,
             success: function(returnhtml) {
                 return true;

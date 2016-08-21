@@ -2,24 +2,28 @@ body, html{
 	width: 100%;
 	height: 100%;
 	margin: 0;
+	background-color: #ff98f4;
 }
+
 #container{
 	height: auto;
 	border: 3px solid blue;
-	position: absolute;
+	position: relative;
 	display: block;
 	bottom: 0;
 	top: 0;
 	left: 0;
 	right: 0;
 	margin: 20px 80px;
-
+	z-index: 1;
+	background-color: #f89f58;
+	position: absolute;
 }
 
 #relativeContainer{
   position: relative;
   width: 100%;
-  height: 95%
+  height: 90%
 }
 
 #messageContainer{
@@ -32,6 +36,12 @@ body, html{
 	border: 3px solid red;
 	max-width: 800px;
 	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+}
+#line0{
+	display: none;
 }
 
 .name{
@@ -44,7 +54,12 @@ body, html{
 	font-size: 20px;
 	float: left;
 	padding-left: 30px;
+	max-width: 80%;
+	max-width: 600px;
+	overflow: auto;
+	word-wrap: break-word;
 }
+
 
 .time{
 	float: right;
@@ -57,5 +72,16 @@ body, html{
 	bottom: 0;
 }
 #message{
-	width: 87%;
+	padding: 10px 5px;
+}
+#submitButton{
+	background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
 }
