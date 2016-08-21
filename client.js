@@ -8,12 +8,12 @@ $(document).ready(function(e) {
         var data = JSON.parse(e.data);
         console.log('got ' + data);
         var line = $("#line");
-        var newLine = line.clone(true);
+        var newLine = line.clone();
         newLine.id = line.id + messageNum++;
-        newLine.find("#message").html(data.message);
-        newLine.find("#time").html(data.time);
-        newLine.find("#name").html(data.name);
-        newLine.insertAfter(line);
+        newLine.find(".message").html(data.message);
+        newLine.find(".time").html(data.time);
+        newLine.find(".name").html(data.name);
+        newLine.insertBefore($("#msgForm"));
     };
 
     // ajax form submission
