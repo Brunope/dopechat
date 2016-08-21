@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
   </head>
   <body>
 	<div id="container">
-	  <div id="line" class="line">
-		<span class="name"></span>
-		<span class="message"></span>
-		<span class="time"></span><br>
+	  
+	  <div id="relativeContainer">
+		<div id="messageContainer">
+		  <div id="line0" class="line">
+			<span class="name">invisible</span>
+			<span class="message">line</span>
+			<span class="time">here</span><br>
+		  </div>
+		</div>
 	  </div>
 	  
 	  <form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
 		Message: <input type="text" id="message" name="message">
 		<input type="submit" id="submitButton" name="submitButton" value="Send">
 	  </form>
+	  
 	</div>
 
 	<!-- scripts here for faster load speed -->

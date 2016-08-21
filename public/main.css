@@ -16,6 +16,17 @@ body, html{
 
 }
 
+#relativeContainer{
+  position: relative;
+  width: 100%;
+  height: 95%
+}
+
+#messageContainer{
+  position: absolute;
+  bottom: 0;
+}
+
 .line{
 	text-align: center;
 	border: 3px solid red;

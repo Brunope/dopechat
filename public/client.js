@@ -4,16 +4,19 @@ $(document).ready(function(e) {
     // set up event stream to receive messages from server
     var source = new EventSource("/events/");
     source.onmessage = function(e) {
+        if (messageNum === Number.MAX_SAFE_INTEGER) {
+            console.log('uh oh');  // probably won't ever happen
+        }
         var data = JSON.parse(e.data);
-        var line = $("#line");
-        var newLine = line.clone();
-        console.log('line id ' + line.attr('id'));
-        newLine.attr('id', line.attr('id') + messageNum++);
+        var prevLine = $('#line' + messageNum);
+        var newLine = prevLine.clone();
+        console.log('line id ' + prevLine.attr('id'));
+        newLine.attr('id', 'line' + (++messageNum));
         console.log('id ' + newLine.attr('id'));
         newLine.find(".message").html(data.message);
         newLine.find(".time").html(data.time);
         newLine.find(".name").html(data.name);
-        newLine.insertAfter($("#line"));
+        newLine.insertAfter(prevLine);
     };
 
     // ajax form submission
