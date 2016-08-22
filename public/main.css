@@ -1,23 +1,23 @@
 body, html{
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	background-color: #ff98f4;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #ff98f4;
 }
 
 #container{
-	height: auto;
-	border: 3px solid blue;
-	position: relative;
-	display: block;
-	bottom: 0;
-	top: 0;
-	left: 0;
-	right: 0;
-	margin: 20px 80px;
-	z-index: 1;
-	background-color: #f89f58;
-	position: absolute;
+  height: auto;
+  border: 3px solid blue;
+  position: relative;
+  display: block;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 20px 80px;
+  z-index: 1;
+  background-color: #f89f58;
+  position: absolute;
 }
 
 #relativeContainer{
@@ -29,27 +29,29 @@ body, html{
 #messageContainer{
   position: absolute;
   bottom: 0;
-  width: 100%
+  width: 100%;
 }
 
 .line{
-	text-align: center;
-	border: 3px solid red;
-	max-width: 100%;
-	margin: auto;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	position: relative;
+  text-align: center;
+  border: 3px solid red;
+  width: 100%;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  width: 100%;
   overflow: auto;
 }
+
 #line0{
-	display: none;
+  display: none;
 }
 
 .name{
-	color: blue;
-	border: 3px solid yellow;
-	float: left;
+  color: blue;
+  border: 3px solid yellow;
+  float: left;
   padding-left: 20px;
 }
 
@@ -66,26 +68,35 @@ body, html{
   text-align: left;
 }
 
-
 .time{
-	float: right;
+  float: right;
   padding-right: 20px;
 }
 
 #msgForm{
-	width: 99.5%;
-	margin: auto;
-	position: absolute;
-	bottom: 0;
-	border: 3px solid indigo;
+  width: 99.5%;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  border: 3px solid indigo;
+  white-space: nowrap;
 }
 #message{
-	width: 79%;
-	padding: 9px 0px;
+  width: 100%;
+  padding: 9px 0px;
 }
+
+#messageBar{
+  overflow: hidden;
+}
+
 #submitButton{
-	background-color: blue;
-	width: 19%;
-	height: 36px;
-	float: right;
+  background-color: blue;
+  height: 36px;
+  width: 70px;
+  float: right;
+}
+
+#user0{
+  display: hidden;
 }

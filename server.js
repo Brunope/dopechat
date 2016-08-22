@@ -57,11 +57,20 @@ app.get('/events/', function(req, res) {
     res.write('\n');
     (function(clientId) {
         console.log('adding client ' + clientId);
-        clients[clientId] = res;
+        clients[clientId] = { conn: res, user: req.session.user };
         req.on("close", function() {
             console.log('removing client ' + clientId);
             delete clients[clientId]});
     })(clientId++)
+});
+
+app.get('/users', function(req, res) {
+    console.log('get users');
+    var users = [];
+    for (key in clients) {
+        users.push(clients[key].user);
+    }
+    res.json(users);
 });
 
 app.post('/process_post', urlencodedParser, function(req, res) {
@@ -79,7 +88,7 @@ var push_to_clients = function(message, user) {
         var data = 'data: { "message": "' + message +
             '", "time": "' + dateString +
             '", "name": "' + user + '" }\n\n';
-        clients[key].write(data);
+        clients[key].conn.write(data);
     };
 }
 
