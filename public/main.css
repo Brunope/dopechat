@@ -29,16 +29,18 @@ body, html{
 #messageContainer{
   position: absolute;
   bottom: 0;
+  width: 100%
 }
 
 .line{
 	text-align: center;
 	border: 3px solid red;
-	max-width: 800px;
+	max-width: 100%;
 	margin: auto;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	position: relative;
+  overflow: auto;
 }
 #line0{
 	display: none;
@@ -48,6 +50,7 @@ body, html{
 	color: blue;
 	border: 3px solid yellow;
 	float: left;
+  padding-left: 20px;
 }
 
 .message{
@@ -64,6 +67,7 @@ body, html{
 
 .time{
 	float: right;
+  padding-right: 20px;
 }
 
 #msgForm{
