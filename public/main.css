@@ -62,6 +62,8 @@ body, html{
 	max-width: 600px;
 	overflow: auto;
 	word-wrap: break-word;
+  text-justify: inter-word;
+  text-align: left;
 }
 
 
