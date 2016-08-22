@@ -1,5 +1,18 @@
 $(document).ready(function(e) {
     var messageNum = 0;
+
+    // set up user list
+    $.get('/users', function(data) {
+        console.log('got ' + data);
+        var baseUser = $('#user0');
+        for (user in data) {
+            var newUser = baseUser.clone();
+            console.log('adding ' + user);
+            newUser.attr('id', user);
+            newUser.html(user);
+            newUser.insertBefore(baseUser);
+        }
+    });
     
     // set up event stream to receive messages from server
     var source = new EventSource("/events/");
