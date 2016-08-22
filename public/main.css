@@ -54,6 +54,7 @@ body, html{
 	font-size: 20px;
 	float: left;
 	padding-left: 30px;
+	padding-right: 20px;
 	max-width: 80%;
 	max-width: 600px;
 	overflow: auto;
@@ -66,22 +67,19 @@ body, html{
 }
 
 #msgForm{
-	width: 100%;
-	margin: 0 auto;
+	width: 99.5%;
+	margin: auto;
 	position: absolute;
 	bottom: 0;
+	border: 3px solid indigo;
 }
 #message{
-	padding: 10px 5px;
+	width: 79%;
+	padding: 9px 0px;
 }
 #submitButton{
-	background-color: #4CAF50;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 50%;
+	background-color: blue;
+	width: 19%;
+	height: 36px;
+	float: right;
 }
