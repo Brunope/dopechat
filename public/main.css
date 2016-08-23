@@ -14,10 +14,25 @@ body, html{
   top: 0;
   left: 0;
   right: 0;
-  margin: 20px 80px;
   z-index: 1;
+  margin: 20px 80px;
   background-color: #f89f58;
   position: absolute;
+}
+
+
+#users{
+  position: absolute;
+  float: right;
+  bottom: 38px;
+  right: 0px;
+  width: 13%;
+  top: 0px;
+  border: 1px solid green;
+  word-wrap: break-word;
+  align: left;
+  list-style-position: outside;
+  background-color: grey;
 }
 
 #relativeContainer{
@@ -40,7 +55,8 @@ body, html{
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
-  width: 100%;
+  width: 85%;
+  float: left;
   overflow: auto;
 }
 
@@ -93,10 +109,11 @@ body, html{
 #submitButton{
   background-color: blue;
   height: 36px;
-  width: 70px;
+  width: 13.5%;
   float: right;
 }
-
-#user0{
-  display: hidden;
+@media screen and (max-width: 767px){
+  #users{
+    display: none;
+  }
 }

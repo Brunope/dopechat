@@ -6,7 +6,7 @@
   <body>
 	<div id="container">
 
-	  <div id="relativeContainer">
+    <div id="relativeContainer">
 		<div id="messageContainer">
 		  <div id="line0" class="line">
 			<div class="name"></div>
@@ -16,13 +16,16 @@
 		</div>
 	  </div>
 
-	  <div id="users">
-		<ul>
-		  <li id="user0"></li>
-		</ul>
-	  </div>
+    <div id="users">
+    <ul>
+      <li id="user0">User0</li>
+      <li id="user1">User1</li>
+      <li id="user2">User2</li>
+      <li id="user3">User3</li>
+    </ul>
+    </div>
 
-	  <form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
+    <form id="msgForm" action="/process_post" title="" method="POST" ajax="true">
 		<input type="submit" id="submitButton" name="submitButton" value="Send">
 		<div id="messageBar">
 		  <input type="text" id="message" name="message">
