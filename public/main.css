@@ -23,8 +23,7 @@ body, html{
 #relativeContainer{
   position: relative;
   width: 100%;
-  height: 94%;
-
+  height: 90%
 }
 
 #messageContainer{
@@ -77,7 +76,6 @@ body, html{
 #msgForm{
   width: 99.5%;
   margin: auto;
-  height: 5%;
   position: absolute;
   bottom: 0;
   border: 3px solid indigo;
@@ -86,7 +84,6 @@ body, html{
 #message{
   width: 100%;
   padding: 9px 0px;
-  height: 100%;
 }
 
 #messageBar{
@@ -95,7 +92,7 @@ body, html{
 
 #submitButton{
   background-color: blue;
-  height: 100%;
+  height: 36px;
   width: 70px;
   float: right;
 }
