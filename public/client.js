@@ -1,6 +1,20 @@
 $(document).ready(function(e) {
-    var messageNum = 0;
 
+    // style that I can't figure out how to do in css
+    var sizeHandler = function() {
+        $('#relativeContainer').height($('#container').height() -
+                                       $('#msgForm').height());
+    };
+    sizeHandler();
+    $(window).resize(sizeHandler);
+
+    scrollToBottom = function () {
+        var relative = document.getElementById('relativeContainer');
+        relative.scrollTop = relative.scrollHeight;
+    };
+    scrollToBottom();
+
+    
     // set up user list
     $.get('/users', function(data) {
         console.log('got ' + data);
@@ -13,7 +27,8 @@ $(document).ready(function(e) {
             newUser.insertBefore(baseUser);
         }
     });
-    
+
+    var messageNum = 0;
     // set up event stream to receive messages from server
     var source = new EventSource("/events/");
     source.onmessage = function(e) {
@@ -30,6 +45,7 @@ $(document).ready(function(e) {
         newLine.find(".time").html(data.time);
         newLine.find(".name").html(data.name);
         newLine.insertAfter(prevLine);
+        scrollToBottom();
     };
 
     // ajax form submission

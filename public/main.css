@@ -21,12 +21,11 @@ body, html{
 
 #users{
   float: right;
-  bottom: 38px;
-  right: 20px;
-  width: 150px;
+  bottom: 36px;
+  right: 0px;
+  width: 147px;
   top: 0px;
   word-wrap: break-word;
-  align: left;
   list-style-position: outside;
   color: white;
   background-color: #000080;
@@ -49,7 +48,7 @@ body, html{
 
 #messageContainer{
   position: absolute;
-  bottom: 0;
+  bottom: 0;  /* frickin css sux, this won't scroll */
   width: 100%;
 }
 
@@ -97,11 +96,14 @@ body, html{
 }
 
 #msgForm{
-  width: 99.5%;
+  width: 100%;
   margin: auto;
   position: absolute;
   bottom: 0;
   white-space: nowrap;
+  padding: 0;
+  margin: 0;
+
 }
 #message{
   width: 100%;
@@ -117,6 +119,8 @@ body, html{
   width: 175px;
   float: right;
   background-color: #ccccff;
+  padding: 0;
+  margin: 0;
 }
 @media screen and (max-width: 767px){
   #users{
