@@ -1,12 +1,5 @@
 $(document).ready(function(e) {
-
-    // style that I can't figure out how to do in css
-    var sizeHandler = function() {
-        $('#relativeContainer').height($('#container').height() -
-                                       $('#msgForm').height());
-    };
-    sizeHandler();
-    $(window).resize(sizeHandler);
+    var messageNum = 0;
 
     // set up user list
     $.get('/users', function(data) {
@@ -20,16 +13,12 @@ $(document).ready(function(e) {
             newUser.insertBefore(baseUser);
         }
     });
-
-
-
+    
     // set up event stream to receive messages from server
-    var messageNum = 0;
     var source = new EventSource("/events/");
     source.onmessage = function(e) {
         if (messageNum === Number.MAX_SAFE_INTEGER) {
             console.log('uh oh');  // probably won't ever happen
-            window.location.reload();  // but if it does this maybe fix?
         }
         var data = JSON.parse(e.data);
         var prevLine = $('#line' + messageNum);
