@@ -6,7 +6,6 @@ body, html{
 }
 
 #container{
-  height: auto;
   border: 3px solid blue;
   position: relative;
   display: block;
@@ -18,18 +17,23 @@ body, html{
   z-index: 1;
   background-color: #f89f58;
   position: absolute;
+  height: 90%;
+  overflow: hidden;
 }
 
 #relativeContainer{
   position: relative;
   width: 100%;
   height: 94%;
+  overflow-y: scroll;
+  border: 2px solid yellow;
 }
 
 #messageContainer{
   position: absolute;
   bottom: 0;
   width: 100%;
+  border: 2px solid green;
 }
 
 .line{
@@ -40,8 +44,6 @@ body, html{
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
-  width: 100%;
-  overflow: auto;
 }
 
 #line0{
@@ -61,8 +63,6 @@ body, html{
   padding-left: 30px;
   padding-right: 20px;
   max-width: 80%;
-  max-width: 600px;
-  overflow: auto;
   word-wrap: break-word;
   text-justify: inter-word;
   text-align: left;
