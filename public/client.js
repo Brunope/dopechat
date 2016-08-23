@@ -2,14 +2,14 @@ $(document).ready(function(e) {
 
     // style that I can't figure out how to do in css
     var sizeHandler = function() {
-        $('#relativeContainer').height($('#container').height() -
+        $('#messageContainer').height($('#container').height() -
                                        $('#msgForm').height());
     };
     sizeHandler();
     $(window).resize(sizeHandler);
 
     scrollToBottom = function () {
-        var relative = document.getElementById('relativeContainer');
+        var relative = document.getElementById('messageContainer');
         relative.scrollTop = relative.scrollHeight;
     };
     scrollToBottom();
