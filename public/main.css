@@ -16,14 +16,14 @@ body, html{
   margin: 20px 80px;
   background-color: #ecd9c6;
   height: 90%;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #users{
-  float: right;
+  position: absolute;
   bottom: 36px;
   right: 0px;
-  width: 147px;
+  width: 150px;
   top: 0px;
   word-wrap: break-word;
   list-style-position: outside;
@@ -47,8 +47,9 @@ body, html{
 }
 
 #messageContainer{
-  position: absolute;
-  bottom: 0;  /* frickin css sux, this won't scroll */
+/*  position: absolute;
+  bottom: 0;  frickin css sux, this won't scroll */
+  height: 100%;
   width: 100%;
 }
 
@@ -60,7 +61,6 @@ body, html{
   position: relative;
   width: 75%;
   float: left;
-  overflow: auto;
   word-wrap: break-word;
 }
 
@@ -116,11 +116,11 @@ body, html{
 
 #submitButton{
   height: 36px;
-  width: 175px;
+  width: 150px;
   float: right;
   background-color: #ccccff;
-  padding: 0;
-  margin: 0;
+  padding: 3px;
+  border: 2px solid blue;
 }
 @media screen and (max-width: 767px){
   #users{
