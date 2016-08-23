@@ -2,13 +2,11 @@ body, html{
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: #ff98f4;
+  background-color: #d2a679;
 }
 
 #container{
-  height: auto;
-  border: 3px solid blue;
-  position: absolute;
+  position: relative;
   display: block;
   bottom: 0;
   top: 0;
@@ -16,29 +14,37 @@ body, html{
   right: 0;
   z-index: 1;
   margin: 20px 80px;
-  background-color: #f89f58;
+  background-color: #ecd9c6;
+  height: 90%;
   overflow: scroll;
 }
 
-
 #users{
-  position: absolute;
   float: right;
   bottom: 38px;
-  right: 0px;
+  right: 20px;
   width: 150px;
   top: 0px;
-  border: 1px solid green;
   word-wrap: break-word;
   align: left;
   list-style-position: outside;
-  background-color: grey;
+  color: white;
+  background-color: #000080;
+  font-family: 'Josefin Slab', serif;
+}
+#UserBar{
+  color: white;
+  text-align: center;
+  font-family: 'Petit Formal Script', cursive;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 #relativeContainer{
   position: relative;
   width: 100%;
-  height: 90%
+  height: 94%;
+  overflow-y: scroll;
 }
 
 #messageContainer{
@@ -49,7 +55,6 @@ body, html{
 
 .line{
   text-align: center;
-  border: 3px solid red;
   margin: auto;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -65,26 +70,30 @@ body, html{
 }
 
 .name{
-  color: blue;
-  border: 3px solid yellow;
+  color: #4d3319;
   float: left;
   padding-left: 20px;
+  font-size: 18px;
+  font-family: 'Petit Formal Script', cursive;
 }
 
 .message{
-	font-size: 20px;
-	float: left;
-	padding-left: 30px;
-	padding-right: 20px;
+  font-size: 20px;
+  float: left;
+  padding-left: 30px;
+  padding-right: 20px;
   max-width: 65%;
-	overflow: auto;
-	word-wrap: break-word;
+  word-wrap: break-word;
   text-justify: inter-word;
   text-align: left;
+  font-family: 'Josefin Slab', serif;
 }
 
 .time{
   float: right;
+  color: #4d3319;
+  font-size: 10px;
+  font-family: 'Josefin Slab', serif;
 }
 
 #msgForm{
@@ -92,7 +101,6 @@ body, html{
   margin: auto;
   position: absolute;
   bottom: 0;
-  border: 3px solid indigo;
   white-space: nowrap;
 }
 #message{
@@ -105,24 +113,25 @@ body, html{
 }
 
 #submitButton{
-  background-color: blue;
   height: 36px;
-  width: 150px;
+  width: 175px;
   float: right;
+  background-color: #ccccff;
 }
 @media screen and (max-width: 767px){
   #users{
     display: none;
   }
   #submitButton{
-    background-color: blue;
+    background-color: #ccccff;
     height: 36px;
     width: 50px;
     float: right;
+    display: inline-block;
+    border: none
   }
   .line{
     text-align: center;
-    border: 3px solid red;
     margin: auto;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -133,14 +142,17 @@ body, html{
     word-wrap: break-word;
   }
   .message{
-  	font-size: 20px;
-  	float: left;
-  	padding-left: 30px;
-  	padding-right: 20px;
-  	overflow: auto;
+    font-size: 20px;
+    float: left;
+    padding-left: 30px;
+    padding-right: 20px;
     max-width: 60%;
-  	word-wrap: break-word;
+    word-wrap: break-word;
     text-justify: inter-word;
     text-align: left;
   }
 }
+/* to do: move back over and down the users(z-index of -1), try
+to fix send button (see new CSS3 button example) or
+just use negative margins,try to get messages to
+display across full width until it hits the users tab */

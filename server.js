@@ -73,7 +73,7 @@ app.get('/users', function(req, res) {
     res.json(users);
 });
 
-app.post('/process_post', urlencodedParser, function(req, res) {
+app.post('/', urlencodedParser, function(req, res) {
     console.log(req.body);
     res.end('ok');
     if (req.body.message.length) {
