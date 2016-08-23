@@ -13,12 +13,27 @@ body, html{
   top: 0;
   left: 0;
   right: 0;
-  margin: 20px 80px;
   z-index: 1;
+  margin: 20px 80px;
   background-color: #f89f58;
   position: absolute;
   height: 90%;
   overflow: hidden;
+}
+
+
+#users{
+  position: absolute;
+  float: right;
+  bottom: 38px;
+  right: 0px;
+  width: 150px;
+  top: 0px;
+  border: 1px solid green;
+  word-wrap: break-word;
+  align: left;
+  list-style-position: outside;
+  background-color: grey;
 }
 
 #relativeContainer{
@@ -39,11 +54,14 @@ body, html{
 .line{
   text-align: center;
   border: 3px solid red;
-  width: 100%;
   margin: auto;
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
+  width: 75%;
+  float: left;
+  overflow: auto;
+  word-wrap: break-word;
 }
 
 #line0{
@@ -62,7 +80,7 @@ body, html{
   float: left;
   padding-left: 30px;
   padding-right: 20px;
-  max-width: 80%;
+  max-width: 65%;
   word-wrap: break-word;
   text-justify: inter-word;
   text-align: left;
@@ -70,7 +88,6 @@ body, html{
 
 .time{
   float: right;
-  padding-right: 20px;
 }
 
 #msgForm{
@@ -93,11 +110,40 @@ body, html{
 #submitButton{
   background-color: blue;
   height: 36px;
-  width: 70px;
+  width: 150px;
   float: right;
-  color: orange;
 }
-
-#user0{
-  display: hidden;
+@media screen and (max-width: 767px){
+  #users{
+    display: none;
+  }
+  #submitButton{
+    background-color: blue;
+    height: 36px;
+    width: 50px;
+    float: right;
+  }
+  .line{
+    text-align: center;
+    border: 3px solid red;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    width: 75%;
+    float: left;
+    overflow: auto;
+    word-wrap: break-word;
+  }
+  .message{
+    font-size: 20px;
+    float: left;
+    padding-left: 30px;
+    padding-right: 20px;
+    overflow: auto;
+    max-width: 60%;
+    word-wrap: break-word;
+    text-justify: inter-word;
+    text-align: left;
+  }
 }
