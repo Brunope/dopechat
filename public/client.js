@@ -43,20 +43,23 @@ $(document).ready(function(e) {
             // update user list if system sent a user event
             let index = data.message.indexOf(' joined');
             if (index > 0) {
-                let userName = data.message.substring(0, index);
+                var userName = data.message.substring(0, index);
                 let user = $('#' + userName);
                 if (user.length === 0) {
                     let newUser = $('#user0').clone();
                     newUser.attr('id', userName);
                     newUser.html(userName);
                     newUser.insertAfter($('#user0'));
+                    data.message = ' joined';
                 }
             } else {
                 index = data.message.indexOf(' left');
                 if (index > 0) {
                     $('#' + data.message.substring(0, index)).remove();
+                    data.message = ' left';
                 }
             }
+            data.name = userName;
         }
         var prevLine = $('#line' + messageNum);
         var newLine = prevLine.clone();
