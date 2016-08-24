@@ -1,3 +1,7 @@
+/* TODOS
+ * better system event communication separation from messages
+ * handle same user across multiple instances
+ */
 var express = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
@@ -11,8 +15,8 @@ app.use(bodyParser.json());
 app.use(session({
     cookieName: 'session',
     secret: '98j93hUtur5h5ehwTnt94tb4t3t3nf6SLSSS5',  // randy
-    duration: 30 * 60 * 1000,
-    activeDuration: 10 * 60 * 1000,
+    duration: 60 * 60 * 1000,
+    activeDuration: 30 * 60 * 1000,
 }));
 
 app.get('/', function(req, res) {
@@ -27,16 +31,25 @@ app.get('/', function(req, res) {
 var clients = {};
 var clientId = 0;
 
+// reserved username for event messages (ie join, dc).
+// clients interpret messages from this user differently.
+SYSTEM_USER = '';
+
 app.get('/login', function(req, res) {
     console.log('get login');
     res.sendFile(__dirname + '/public/login.html');
 });
 
 app.post('/login', urlencodedParser, function(req, res) {
-    console.log('post login ' + req.body.name);
-    req.session.user = req.body.name;
-    res.redirect('/');
-    return true;
+    user = req.body.name;
+    console.log('post login ' + user);
+    if (user !== '' && !userTaken(user, clients)) {
+        req.session.user = user;
+        res.redirect('/');
+        return true;
+    } else {
+        res.end('username taken');
+    };
 });
 
 app.get('/logout', function(req, res) {
@@ -58,8 +71,10 @@ app.get('/events/', function(req, res) {
     (function(clientId) {
         console.log('adding client ' + clientId);
         clients[clientId] = { conn: res, user: req.session.user };
+        push_to_clients(clients[clientId].user + ' joined', SYSTEM_USER);
         req.on("close", function() {
             console.log('removing client ' + clientId);
+            push_to_clients(clients[clientId].user + ' left', SYSTEM_USER);
             delete clients[clientId]});
     })(clientId++)
 });
@@ -76,9 +91,21 @@ app.get('/users', function(req, res) {
 app.post('/', urlencodedParser, function(req, res) {
     console.log(req.body);
     res.end('ok');
+    if (!req.session) {
+        res.redirect('/login');
+        return true;
+    }
     if (req.body.message.length) {
         push_to_clients(req.body.message, req.session.user);
     }
+});
+
+app.use(express.static('./public'));  // serve static files AFTER routing
+
+var server = app.listen(54321, function(err) {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('running on http://%s:%s', host, port);
 });
 
 var push_to_clients = function(message, user) {
@@ -90,12 +117,13 @@ var push_to_clients = function(message, user) {
             '", "name": "' + user + '" }\n\n';
         clients[key].conn.write(data);
     };
-}
+}         
 
-app.use(express.static('./public'));  // serve static files AFTER routing
-
-var server = app.listen(54321, function(err) {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('running on http://%s:%s', host, port);
-});
+function userTaken(user, clients) {
+    for (key in clients) {
+        if (clients[key].user === user) {
+            return true;
+        }
+    }
+    return false;
+};
