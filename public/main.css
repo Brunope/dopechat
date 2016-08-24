@@ -2,7 +2,8 @@ body, html{
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: #d2a679;
+  background: #000000 url("http://604now.com/wp-content/uploads/2015/10/tupac-vancouver.jpg") no-repeat center;
+  background-size: 1000px, 800px;
 }
 
 #container{
@@ -14,9 +15,8 @@ body, html{
   right: 0;
   z-index: 1;
   margin: 20px 80px;
-  background-color: #ecd9c6;
   overflow: hidden;
-  border: 3px solid purple;
+  background: rgba(0, 0, 0 ,0.6)
 }
 
 #users{
@@ -32,11 +32,11 @@ body, html{
   height: 100%;
   word-wrap: break-word;
   color: white;
-  background-color: #000080;
+  background: rgb(0, 0, 0);
   font-family: 'Josefin Slab', serif;
 }
 #UserBar{
-  color: white;
+  color: rgb(255, 170, 0);
   text-align: center;
   font-family: 'Petit Formal Script', cursive;
   font-size: 22px;
@@ -62,7 +62,6 @@ body, html{
   right: 150px;  /* important, cannot explicitly set width */
   overflow-y: scroll;
   overflow-x: hidden;
-  border: 3px solid yellow;
 }
 
 .line{
@@ -80,7 +79,7 @@ body, html{
 }
 
 .name{
-  color: #4d3319;
+  color: white;
   float: left;
   padding-left: 20px;
   font-size: 18px;
@@ -97,11 +96,12 @@ body, html{
   text-justify: inter-word;
   text-align: left;
   font-family: 'Josefin Slab', serif;
+  color: white;
 }
 
 .time{
   float: right;
-  color: #4d3319;
+  color: white;
   font-size: 0.5em;
   font-family: 'Josefin Slab', serif;
 }
@@ -127,25 +127,44 @@ body, html{
 }
 
 #submitButton{
-  height: 41px;
-  width: 150px;
-  float: right;
-  background-color: #ccccff;
-  padding: 3px;
-  display: inline-block;
+    background-color: #b3b3ff;
+    border: none;
+    color: #000080;
+    padding: 11px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    width: 150px;
+}
+#submitButton:hover{
+  background-color: #000080;
+  color: white;
 }
 @media screen and (max-width: 767px){
   #users{
     display: none;
   }
   #submitButton{
-    background-color: #ccccff;
-    height: 40px;
-    width: 50px;
-    float: right;
-    display: inline-block;
-    border: none
+      background-color: #b3b3ff;
+      border: none;
+      color: #000080;
+      height: 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      cursor: pointer;
+      float: right;
+      width: 85px;
   }
+  #submitButton:hover{
+    background-color: #000080;
+    color: white;
+  }
+
   .line{
     text-align: center;
     margin: auto;
