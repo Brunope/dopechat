@@ -88,7 +88,7 @@ body, html{
 }
 
 .message{
-  font-size: 0.7em;
+  font-size: 20px;
   float: left;
   padding-left: 30px;
   padding-right: 20px;
@@ -127,12 +127,12 @@ body, html{
 }
 
 #submitButton{
-  height: 36px;
+  height: 41px;
   width: 150px;
   float: right;
   background-color: #ccccff;
   padding: 3px;
-  border: 2px solid blue;
+  display: inline-block;
 }
 @media screen and (max-width: 767px){
   #users{
@@ -140,7 +140,7 @@ body, html{
   }
   #submitButton{
     background-color: #ccccff;
-    height: 36px;
+    height: 40px;
     width: 50px;
     float: right;
     display: inline-block;
