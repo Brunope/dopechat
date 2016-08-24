@@ -13,13 +13,14 @@ $(document).ready(function(e) {
         relative.scrollTop = relative.scrollHeight;
     };
     scrollToBottom();
-
     
     // set up user list
     $.get('/users', function(data) {
-        console.log('got ' + data);
+        console.log('got ' + users);
         var baseUser = $('#user0');
-        for (user in data) {
+        for (var i = 0; i < data.length; i++) {
+            let user = data[i];
+            console.log('adding user ' + user);
             var newUser = baseUser.clone();
             console.log('adding ' + user);
             newUser.attr('id', user);
@@ -36,6 +37,27 @@ $(document).ready(function(e) {
             console.log('uh oh');  // probably won't ever happen
         }
         var data = JSON.parse(e.data);
+        console.log('data: ' + data.name);
+        if (data.name === '') {  // system user = ''
+            console.log('user event');
+            // update user list if system sent a user event
+            let index = data.message.indexOf(' joined');
+            if (index > 0) {
+                let userName = data.message.substring(0, index);
+                let user = $('#' + userName);
+                if (user.length === 0) {
+                    let newUser = $('#user0').clone();
+                    newUser.attr('id', userName);
+                    newUser.html(userName);
+                    newUser.insertAfter($('#user0'));
+                }
+            } else {
+                index = data.message.indexOf(' left');
+                if (index > 0) {
+                    $('#' + data.message.substring(0, index)).remove();
+                }
+            }
+        }
         var prevLine = $('#line' + messageNum);
         var newLine = prevLine.clone();
         console.log('line id ' + prevLine.attr('id'));

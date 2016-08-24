@@ -20,10 +20,6 @@ body, html{
 }
 
 #users{
-/*  position: absolute;
-  bottom: 36px;
-  right: 0px;
-  top: 0px;*/
   float: right;
   clear: none;
   width: 150px;
@@ -41,6 +37,9 @@ body, html{
   font-family: 'Petit Formal Script', cursive;
   font-size: 22px;
   font-weight: 600;
+}
+#user0 {
+  display: none;
 }
 
 #relativeContainer{
