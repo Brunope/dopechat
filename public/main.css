@@ -163,24 +163,21 @@ body, html{
     background-color: #000080;
     color: white;
   }
-
+/*
   .line{
     text-align: center;
-    margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
     position: relative;
-    width: 75%;
+    width: 100%;
     float: left;
     overflow: auto;
     word-wrap: break-word;
-  }
+  }*/
   .message{
     font-size: 20px;
     float: left;
     padding-left: 30px;
     padding-right: 20px;
-    max-width: 60%;
+    max-width: 80%;
     word-wrap: break-word;
     text-justify: inter-word;
     text-align: left;
