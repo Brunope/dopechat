@@ -2,8 +2,8 @@ body, html{
   width: 100%;
   height: 100%;
   margin: 0;
-  background: #000000 url("http://604now.com/wp-content/uploads/2015/10/tupac-vancouver.jpg") no-repeat center;
-  background-size: 1000px, 800px;
+  background: #000000 url("pac.jpg");
+  background-size: contain;
 }
 
 #container{
@@ -16,7 +16,6 @@ body, html{
   z-index: 1;
   margin: 20px 80px;
   overflow: hidden;
-  background: rgba(0, 0, 0 ,0.6)
 }
 
 #users{
