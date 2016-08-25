@@ -1,15 +1,14 @@
 body, html{
   width: 100%;
   height: 100%;
+  border: 2px solid white;
   margin: 0;
   background: #000000 url("pac.jpg");
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-#darken{
-  width: 100%;
-  height:100%;
-  background: rgba(0, 0, 0, 0.6);
-}
+
 #container{
   position: absolute;
   display: block;
@@ -58,7 +57,6 @@ body, html{
   right: 150px;  /* important, cannot explicitly set width */
   overflow-y: scroll;
   overflow-x: hidden;
-  border: 2px solid yellow;
 }
 
 .line{
@@ -157,14 +155,14 @@ body, html{
       background-color: #d9b18c;
       border: none;
       color: #000000;
-      height: 40px;
+      height: 50px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 10px;
+      font-size: 20px;
       cursor: pointer;
       float: right;
-      width: 85px;
+      width: 120px;
       font-variant: small-caps;
       font-family: 'Trirong', serif;
   }
@@ -172,15 +170,7 @@ body, html{
     background-color: #000000;
     color: white;
   }
-/*
-  .line{
-    text-align: center;
-    position: relative;
-    width: 100%;
-    float: left;
-    overflow: auto;
-    word-wrap: break-word;
-  }*/
+
   .message{
     font-size: 20px;
     float: left;
