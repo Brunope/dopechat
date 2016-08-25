@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
+<head>
+  <link rel="stylesheet" type="text/css" href="login.css">
+</head>
   <body>
+  <style>
+@import 'https://fonts.googleapis.com/css?family=Amatic+SC';
+</style>
 	<form id="loginForm" action="/login" title="" method="POST">
-	  Name: <input type="text" id="name" name="name">
-	  <input type="submit" value="Login">
+    <div id="title">
+	  <h1>Greetings</h1>
+    <p>Enter your name:</p>
+  </div>
+      <input type="text" id="name" name="name">
+	  <input type="submit" id="submit" value="Login">
 	</form>
   </body>
 </html>
-

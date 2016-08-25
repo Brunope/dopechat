@@ -1,0 +1,55 @@
+body, html{
+  background: #003300;
+  color: #e6ffe6;
+  font-family: 'Amatic SC', cursive;
+  background: repeating-radial-gradient(circle, #008000 15%, #003300 25%, #001a00 30%, #000000 30%);
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#loginForm{
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+h1{
+  font-size: 45px;
+  font-weight: 1900;
+}
+p{
+  font-size: 30px;
+}
+#name{
+  width: 300px;
+  padding-top: 15px;
+  padding-bottom: 14px;
+  font-size: 18px;
+  font-family: 'Amatic SC', cursive
+}
+
+#name:hover{
+  box-shadow: 2px 2px 30px #00cc00;
+}
+
+#submit{
+  background-color: #001a00;
+  border: none;
+  color: white;
+  padding: 18px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Amatic SC', cursive;
+
+}
+#submit:hover{
+  box-shadow: 1px 1px 20px #009900;
+}
