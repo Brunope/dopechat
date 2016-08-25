@@ -67,11 +67,19 @@ app.get('/events/', function(req, res) {
     	'Cache-Control': 'no-cache',
     	'Connection': 'keep-alive'
     });
+    res.connection.setTimeout(0);  // no timeout
     res.write('\n');
     (function(clientId) {
         console.log('adding client ' + clientId);
+        if (!userTaken(req.session.user, clients)) {
+            var weirdUserShenanigans = false;
+        } else {
+            var weirdUserShenanigans = true;
+        }
         clients[clientId] = { conn: res, user: req.session.user };
-        push_to_clients(clients[clientId].user + ' joined', SYSTEM_USER);
+        if (!weirdUserShenanigans) {
+            push_to_clients(clients[clientId].user + ' joined', SYSTEM_USER);
+        }
         req.on("close", function() {
             console.log('removing client ' + clientId);
             push_to_clients(clients[clientId].user + ' left', SYSTEM_USER);
