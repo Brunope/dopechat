@@ -18,8 +18,8 @@ $(document).ready(function(e) {
     $.get('/users', function(data) {
         console.log('got ' + users);
         var baseUser = $('#user0');
+        var user;
         for (var i = 0; i < data.length; i++) {
-            let user = data[i];
             console.log('adding user ' + user);
             var newUser = baseUser.clone();
             console.log('adding ' + user);
@@ -41,12 +41,12 @@ $(document).ready(function(e) {
         if (data.name === '') {  // system user = ''
             console.log('user event');
             // update user list if system sent a user event
-            let index = data.message.indexOf(' joined');
+            var index = data.message.indexOf(' joined');
             if (index > 0) {
                 var userName = data.message.substring(0, index);
-                let user = $('#' + userName);
+                var user = $('#' + userName);
                 if (user.length === 0) {
-                    let newUser = $('#user0').clone();
+                    var newUser = $('#user0').clone();
                     newUser.attr('id', userName);
                     newUser.html(userName);
                     newUser.insertAfter($('#user0'));
