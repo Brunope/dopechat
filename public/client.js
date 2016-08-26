@@ -3,7 +3,7 @@ $(document).ready(function(e) {
     // style that I can't figure out how to do in css
     var sizeHandler = function() {
         $('#messageContainer').height($('#container').height() -
-                                       $('#msgForm').height());
+                                      $('#msgForm').height());
     };
     sizeHandler();
     $(window).resize(sizeHandler);
