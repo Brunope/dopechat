@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
         res.redirect('/login');
         return true;
     }
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/work.html');
 });
 
 var clients = {};
@@ -125,7 +125,7 @@ var push_to_clients = function(message, user) {
             '", "name": "' + user + '" }\n\n';
         clients[key].conn.write(data);
     };
-}         
+}
 
 function userTaken(user, clients) {
     for (key in clients) {
