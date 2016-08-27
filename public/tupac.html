@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="tupac.css">
+  </head>
+  <body>
+	<style>
+	  @import 'https://fonts.googleapis.com/css?family=Trirong';
+	</style>
+	<div id="container">
+
+      <div id="users">
+        <p id="UserBar">Users</p>
+		<ul>
+		  <li id="user0" class="user">User0</li>
+		</ul>
+      </div>
+
+	  <div id="messageContainer">
+		<div id="line0" class="line">
+		  <div class="name"></div>
+		  <div class="message"></div>
+		  <div class="time"></div><br>
+		</div>
+	  </div>
+
+	  <form id="msgForm" action="/" title="" method="POST" ajax="true">
+		<input type="submit" id="submitButton" name="submitButton" value="Send">
+		<div id="messageBar">
+		  <input type="text" id="message" name="message">
+		</div>
+	  </form>
+
+	</div> <!-- container -->
+
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="client.js"></script>
+  </body>
+</html>
