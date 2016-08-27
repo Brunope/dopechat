@@ -14,19 +14,10 @@ var app = express();
 app.use(bodyParser.json());
 app.use(session({
     cookieName: 'session',
-    secret: '98j93hUtur5h5ehwTnt94tb4t3t3nf6SLSSS5',  // randy
+    secret: fs.readFileSync('secret.txt', 'utf8'),
     duration: 60 * 60 * 1000,
     activeDuration: 30 * 60 * 1000,
 }));
-
-app.get('/', function(req, res) {
-    console.log('get index from ' + req.session.user);
-    if (!req.session.user) {
-        res.redirect('/login');
-        return true;
-    }
-    res.sendFile(__dirname + '/public/work.html');
-});
 
 var clients = {};
 var clientId = 0;
@@ -34,6 +25,25 @@ var clientId = 0;
 // reserved username for event messages (ie join, dc).
 // clients interpret messages from this user differently.
 SYSTEM_USER = '';
+
+app.get('/', function(req, res) {
+    console.log('get index from ' + req.session.user);
+    if (!req.session.user) {
+        req.session.room = '2pac';
+        res.redirect('/login');
+        return true;
+    }
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/work', function(req, res) {
+    if (!req.session.user) {
+        req.session.room = 'work';
+        res.redirect('/login');
+        return true;
+    }
+    res.sendFile(__dirname + '/public/work.html');
+});
 
 app.get('/login', function(req, res) {
     console.log('get login');
@@ -45,7 +55,11 @@ app.post('/login', urlencodedParser, function(req, res) {
     console.log('post login ' + user);
     if (user !== '' && !userTaken(user, clients)) {
         req.session.user = user;
-        res.redirect('/');
+        if (req.session.room === 'work') {
+            res.redirect('/work');
+        } else {
+            res.redirect('/');
+        }
         return true;
     } else {
         res.end('username taken');
