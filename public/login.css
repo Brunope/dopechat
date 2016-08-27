@@ -29,10 +29,15 @@ p{
 }
 #name{
   width: 300px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 30px;
-  font-family: 'Englebert', sans-serif;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 18px;
+  height: 40px;
+  font-family: 'Amatic SC', sans-serif;
+  margin: 0px;
+  display: inline-block;
 }
 
 #name:hover{
@@ -43,12 +48,15 @@ p{
   background-color: #001a00;
   border: none;
   color: white;
-  padding: 18px 34px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   font-family: 'Titan One', cursive;
+  height: 54px;
+  width: 100px;
+  position: absolute;
+  bottom: 0;
 
 }
 #submit:hover{
