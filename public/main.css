@@ -1,0 +1,41 @@
+body, html{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  background: repeating-radial-gradient(circle, blue 15%, red 25%, blue 30%);
+  overflow: hidden;
+}
+#text{
+  font-size: 40px;
+}
+#tupac{
+  background-color: #001a00;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100px;
+  padding: 10px 2px;
+}
+#work{
+  background-color: #001a00;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100px;
+  padding: 10px 2px;
+}
+#tupac:hover{
+  box-shadow: 1px 1px 20px #000000;
+  background-color:   blue;
+}
+#work:hover{
+  box-shadow: 1px 1px 20px #000000;
+  background-color: red;
+}
