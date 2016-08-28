@@ -1,12 +1,13 @@
 /* TODOS
  * better system event communication separation from messages
- * handle same user across multiple instances
+ * fix the undefined name timeout without login bug
+ * buy a domain for trusted https
  */
 var express = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var session = require('client-sessions');
-
+var https = require('https');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var app = express();
@@ -29,10 +30,10 @@ SYSTEM_USER = '';
 app.get('/', function(req, res) {
     console.log('get index from ' + req.session.user);
     if (!req.session.user) {
-        req.session.room = '2pac';
         res.redirect('/login');
         return true;
     }
+    
     res.sendFile(__dirname + '/public/index.html');
 });
 
@@ -43,6 +44,15 @@ app.get('/work', function(req, res) {
         return true;
     }
     res.sendFile(__dirname + '/public/work.html');
+});
+
+app.get('/tupac', function(req, res) {
+    if (!req.session.user) {
+        req.session.room = 'work';
+        res.redirect('/login');
+        return true;
+    }
+    res.sendFile(__dirname + '/public/2pac.html');
 });
 
 app.get('/login', function(req, res) {
@@ -124,11 +134,20 @@ app.post('/', urlencodedParser, function(req, res) {
 
 app.use(express.static('./public'));  // serve static files AFTER routing
 
-var server = app.listen(54321, function(err) {
-    var host = server.address().address;
-    var port = server.address().port;
+var privateKey = fs.readFileSync('ssl/chat.key', 'utf8');
+var certificate = fs.readFileSync('ssl/chat.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(54321, function(err) {
+    var host = httpsServer.address().address;
+    var port = httpsServer.address().port;
     console.log('running on http://%s:%s', host, port);
 });
+
+
+
+// helper functions
 
 var push_to_clients = function(message, user) {
     var date = new Date();
