@@ -10,6 +10,14 @@ var session = require('client-sessions');
 var https = require('https');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
+var privateKey = fs.readFileSync('ssl/chat.key', 'utf8');
+var certificate = fs.readFileSync('ssl/chat.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+var httpPort = 54321;
+var httpsPort = 55555;
+
+var userFile = 'users.txt';  // list of all user names ever used
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -46,7 +54,7 @@ app.get('/work', function(req, res) {
     res.sendFile(__dirname + '/public/work.html');
 });
 
-app.get('/tupac', function(req, res) {
+app.get('/2pac', function(req, res) {
     if (!req.session.user) {
         req.session.room = 'work';
         res.redirect('/login');
@@ -65,6 +73,10 @@ app.post('/login', urlencodedParser, function(req, res) {
     console.log('post login ' + user);
     if (user !== '' && !userTaken(user, clients)) {
         req.session.user = user;
+        // save user name
+        fs.appendFile(userFile, user + '\n', function(err) {
+            if (err) console.log(err);
+        });
         if (req.session.room === 'work') {
             res.redirect('/work');
         } else {
@@ -134,16 +146,19 @@ app.post('/', urlencodedParser, function(req, res) {
 
 app.use(express.static('./public'));  // serve static files AFTER routing
 
-var privateKey = fs.readFileSync('ssl/chat.key', 'utf8');
-var certificate = fs.readFileSync('ssl/chat.crt', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
-
 var httpsServer = https.createServer(credentials, app);
-httpsServer.listen(54321, function(err) {
+httpsServer.listen(httpsPort, function(err) {
     var host = httpsServer.address().address;
     var port = httpsServer.address().port;
-    console.log('running on http://%s:%s', host, port);
+    console.log('running https server on https://%s:%s', host, port);
 });
+
+var httpServer = app.listen(httpPort, function(err) {
+    var host = httpServer.address().address;
+    var port = httpServer.address().port;
+    console.log('running http server on http://%s%s', host, port);
+});
+
 
 
 
