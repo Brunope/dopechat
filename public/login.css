@@ -1,31 +1,40 @@
 
 body, html{
-  background: #003300;
-  color: #e6ffe6;
-  font-family: 'Englebert', sans-serif;
-  background: repeating-radial-gradient(circle, #006600 15%, #001a00 25%, #006600 30%);
+  background-color: #f2f2d9;
+  color: black;
   margin: 0px;
   padding: 0px;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  font-family: 'Poiret One', cursive;
 }
 
 #loginForm{
   text-align: center;
   margin: 0px;
-  padding: 0px;
+  padding-bottom: 50px;
+  padding-top: 8px;
   position: relative;
-  top: 0px;
+  top: 100px;
   left: 0px;
   right: 0px;
+  transition: width 4s;
+  transition-property: all;
+}
+#loginForm:hover{
+  background-color: #D4AF37;
+  box-shadow: 2px 2px 50px #663300;
 }
 h1{
   font-size: 45px;
-  font-family: 'Titan One', cursive;
+  font-family: 'Syncopate', sans-serif;
 }
 p{
   font-size: 30px;
+}
+#line{
+  text-align: center;
 }
 #name{
   width: 300px;
@@ -35,30 +44,25 @@ p{
   padding-right: 5px;
   font-size: 18px;
   height: 40px;
-  font-family: 'Amatic SC', sans-serif;
+  font-family: 'Poiret One', cursive;
   margin: 0px;
   display: inline-block;
 }
 
-#name:hover{
-  box-shadow: 2px 2px 50px #000000;
-}
 
 #submit{
-  background-color: #001a00;
+  background-color: #f2f2d9;
   border: none;
-  color: white;
+  color: black;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-family: 'Titan One', cursive;
+  font-family: 'Poiret One', cursive;
   height: 54px;
   width: 100px;
-  position: absolute;
-  bottom: 0;
 
 }
 #submit:hover{
-  box-shadow: 1px 1px 20px #000000;
+  box-shadow: 1px 1px 20px #4c452c;
 }
