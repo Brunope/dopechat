@@ -3,39 +3,53 @@ body, html{
   height: 100%;
   margin: 0;
   text-align: center;
-  background: repeating-radial-gradient(circle, blue 15%, red 25%, blue 30%);
+  background-color: #D4AF37;
   overflow: hidden;
+  font-family: 'Poiret One', cursive;
+}
+#container{
+  max-width: 800px;
+  margin: auto;
+  margin-top: 130px;
+  border-radius: 50%;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  transition: width 4s;
+  transition-property: all;
+}
+#container:hover{
+  background-color: #f2f2d9;
+  box-shadow: 2px 2px 50px #663300;
 }
 #text{
   font-size: 40px;
+  font-family: 'Syncopate', sans-serif;
 }
 #tupac{
-  background-color: #001a00;
   border: none;
-  color: white;
+  color: #663300;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   width: 100px;
   padding: 10px 2px;
+  border-radius: 50%;
 }
 #work{
-  background-color: #001a00;
   border: none;
-  color: white;
+  color: #663300;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   width: 100px;
   padding: 10px 2px;
+  border-radius: 50%;
 }
 #tupac:hover{
-  box-shadow: 1px 1px 20px #000000;
-  background-color:   blue;
+  box-shadow: 1px 1px 20px #663300;
 }
 #work:hover{
-  box-shadow: 1px 1px 20px #000000;
-  background-color: red;
+  box-shadow: 1px 1px 20px #663300;
 }
