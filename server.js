@@ -1,4 +1,5 @@
 /* TODOS
+ * XSS
  * better system event communication separation from messages
  * fix the undefined name timeout without login bug
  * buy a domain for trusted https
@@ -8,6 +9,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var session = require('client-sessions');
 var https = require('https');
+var escape = require('escape-html');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var privateKey = fs.readFileSync('ssl/chat.key', 'utf8');
@@ -161,21 +163,21 @@ var httpServer = app.listen(httpPort, function(err) {
 
 
 
-
 // helper functions
 
 var push_to_clients = function(message, user) {
     var date = new Date();
     var dateString = date.toString().split(' ')[4];
     for (key in clients) {
-        var data = 'data: { "message": "' + message +
-            '", "time": "' + dateString +
-            '", "name": "' + user + '" }\n\n';
+        var data = 'data: { "message": "' + escape(message) +
+            '", "time": "' + escape(dateString) +
+            '", "name": "' + escape(user) + '" }\n\n';
         clients[key].conn.write(data);
     };
 }
 
 function userTaken(user, clients) {
+    if (user === SYSTEM_USER) return true;
     for (key in clients) {
         if (clients[key].user === user) {
             return true;

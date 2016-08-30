@@ -3,7 +3,7 @@ $(document).ready(function(e) {
     // style that I can't figure out how to do in css
     var sizeHandler = function() {
         $('#messageContainer').height($('#container').height() -
-                                      $('#msgForm').height());
+                                      $('#msgForm').height() - 10);
     };
     sizeHandler();
     $(window).resize(sizeHandler);
@@ -17,7 +17,7 @@ $(document).ready(function(e) {
     // set up user list
     function updateUsers() {
         $.get('/users', function(users) {
-            // delete all users, then reinsert all connected users;
+            // delete all users, then reinsert all connected users
             // ineffecient but robust.
             console.log('got ' + users);
             var currentUsers = $('.user');
@@ -58,7 +58,7 @@ $(document).ready(function(e) {
         newLine.find('.message').html(data.message);
         newLine.find('.time').html(data.time);
         newLine.find('.name').html(data.name);
-        if (data.name === '') {  // system user = ''
+        if (data.name === '') {  // message from system user
             console.log('user event ' + data.name);
             updateUsers();
             if (data.message.endsWith(' joined')) {  // user just joined
@@ -70,9 +70,11 @@ $(document).ready(function(e) {
                 newLine.find('.name').html(
                     data.message.substring(0, data.message.indexOf(' left')));
             } else {
-                console.log('weeeeeird');
+                console.log('shenanigans');
             }
             newLine.addClass('system');
+        } else {
+          newLine.removeClass('system');
         }
         newLine.insertAfter(prevLine);
         scrollToBottom();
