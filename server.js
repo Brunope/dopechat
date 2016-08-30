@@ -158,7 +158,7 @@ httpsServer.listen(httpsPort, function(err) {
 var httpServer = app.listen(httpPort, function(err) {
     var host = httpServer.address().address;
     var port = httpServer.address().port;
-    console.log('running http server on http://%s%s', host, port);
+    console.log('running http server on http://%s:%s', host, port);
 });
 
 
